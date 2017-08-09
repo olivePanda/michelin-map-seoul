@@ -1,3 +1,10 @@
+var $category = $('#category');
+var $title = $('#title');
+var $grade = $('#grade');
+var $homepage = $('#homepage');
+var $address = $('#address');
+var $phone = $('#phone');
+
 var width = 1200;
 var height = 800;
 
@@ -13,15 +20,6 @@ var projection = d3.geo.mercator()
 var map = svg.append("g").attr("id", "map");
 var places = svg.append("g").attr("id", "places");
 var path = d3.geo.path().projection(projection);
-
-function test(data) {
-    console.log(data.category);
-    console.log(data.title);
-    console.log(data.grade);
-    console.log(data.homepage);
-    console.log(data.address);
-    console.log(data.phone);
-}
 
 $.get("/get_seoul_topojson", function(data) {
     var features = topojson.feature(data, data.objects.seoul_municipalities_geo).features;
@@ -50,3 +48,27 @@ $.get("/get_res_position", function(data) {
         .attr("onclick", function(d) {return "test("+JSON.stringify(d)+")"})
         .attr("r", 5);
 });
+
+function test(data) {
+    $category.text(data.category);
+    $title.text(data.title);
+    $grade.text(replaceGrade(data.grade));
+    $homepage.empty();
+    $homepage.append("<a href='"+data.homepage+"'>바로가기</a>");
+    $address.text(data.address);
+    $phone.text(data.phone);
+}
+
+function replaceGrade(grade) {
+    if (grade == 'icon-star3') {
+        return '★★★';
+    } else if (grade == 'icon-star2') {
+        return '★★';
+    } else if (grade == 'icon-star') {
+        return '★';
+    } else if ((grade == 'icon-bib-gourmand')) {
+        return '빕구르망';
+    } else {
+        return '-';
+    }
+}
