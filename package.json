@@ -1,0 +1,31 @@
+{
+  "name": "michelin_seoul_maps",
+  "version": "1.0.0",
+  "description": "michelin seoul map",
+  "engines": {
+    "node": "6.11.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "cheerio": "^1.0.0-rc.2",
+    "cheerio-httpcli": "^0.7.0",
+    "collections": "^5.0.7",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.5",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://DGJung@bitbucket.org/DGJung/michelin_seoul_maps.git"
+  },
+  "author": "dg.jung",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/DGJung/michelin_seoul_maps#readme"
+}
